@@ -39,7 +39,7 @@ public class Balls {
         }
     }
 
-    public GameResult calculate(Balls guess) {
+    public GameResult compareWith(Balls guess) {
         int strike = calculateStrike(guess);
         int ball = calculateBalls(guess);
 

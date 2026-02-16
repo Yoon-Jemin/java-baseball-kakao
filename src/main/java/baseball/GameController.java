@@ -32,7 +32,7 @@ public class GameController {
             outputView.printNumberInputMessage();
             try {
                 Balls guessBalls = new Balls(inputView.inputGuessNumber());
-                GameResult gameResult = answerBalls.calculate(guessBalls);
+                GameResult gameResult = answerBalls.compareWith(guessBalls);
                 outputView.printResultMessage(gameResult);
                 return gameResult;
             } catch (IllegalArgumentException e) {
@@ -44,8 +44,8 @@ public class GameController {
     private boolean keepGoing() {
         outputView.printGameOverMessage();
         outputView.printGameRestartMessage();
-        int restart = Integer.parseInt(inputView.inputRestartNumber());
+        RestartCommand command = RestartCommand.from(Integer.parseInt(inputView.inputRestartNumber()));
 
-        return restart == 1;
+        return command.isRestart();
     }
 }

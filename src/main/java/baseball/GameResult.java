@@ -31,6 +31,18 @@ public class GameResult {
         return strike == 3;
     }
 
+    public boolean isNothing() {
+        return strike == 0 && ball == 0;
+    }
+
+    public boolean hasOnlyStrike() {
+        return ball == 0;
+    }
+
+    public boolean hasOnlyBall() {
+        return strike == 0;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(strike, ball);
