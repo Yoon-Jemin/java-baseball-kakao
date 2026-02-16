@@ -47,20 +47,24 @@ public class Balls {
     }
 
     private int calculateBalls(Balls guess) {
-        Set<Integer> myValues = this.balls.stream()
+        return Math.toIntExact(this.balls.stream()
                 .map(Ball::getValue)
-                .collect(Collectors.toSet());
-
-        return Math.toIntExact(guess.balls.stream()
-                .map(Ball::getValue)
-                .filter(myValues::contains)
+                .filter(guess::containsValue)
                 .count());
     }
 
+    public boolean containsValue(int value) {
+        return balls.stream().anyMatch(b -> b.getValue() == value);
+    }
+
     private int calculateStrike(Balls guess) {
-        Set<Ball> intersection = new HashSet<>(guess.balls);
-        intersection.retainAll(this.balls);
-        return intersection.size();
+        return Math.toIntExact(this.balls.stream()
+                .filter(guess::containsBall)
+                .count());
+    }
+
+    public boolean containsBall(Ball ball) {
+        return balls.contains(ball);
     }
 
     @Override

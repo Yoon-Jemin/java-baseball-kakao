@@ -27,6 +27,10 @@ public class GameResult {
         return strike;
     }
 
+    public boolean isGameOver() {
+        return strike == 3;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(strike, ball);

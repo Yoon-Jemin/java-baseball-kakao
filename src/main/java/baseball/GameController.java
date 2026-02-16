@@ -20,7 +20,7 @@ public class GameController {
 
         while (true) {
             GameResult gameResult = play(answerBalls);
-            if (gameResult.getStrike() == 3) {
+            if (gameResult.isGameOver()) {
                 if (!keepGoing()) break;
                 answerBalls = new Balls(numberGenerator.generate());
             }
